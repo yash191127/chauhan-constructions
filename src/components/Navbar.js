@@ -1,17 +1,17 @@
 import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 
 function Navbar() {
   const [active, setActive] = useState("hero");
 
-  const links = [
+  // ✅ FIX: useMemo use kiya
+  const links = useMemo(() => [
     { name: "Home", id: "hero" },
     { name: "Services", id: "services" },
     { name: "Projects", id: "projects" },
     { name: "Contact", id: "contact" },
-  ];
+  ], []);
 
-  // 🔥 AUTO ACTIVE ON SCROLL
   useEffect(() => {
     const handleScroll = () => {
       links.forEach((link) => {
@@ -28,35 +28,33 @@ function Navbar() {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [links]); // ✅ now stable
 
   return (
     <motion.nav
-  initial={{ y: -80 }}
-  animate={{ y: 0 }}
-  transition={{ duration: 0.5 }}
-  style={{
-    position: "fixed",
-    top: 0,
-    left: 0,
-    width: "100%",
-    padding: "15px 40px",
-    background: "rgba(0,0,0,0.8)",
-    backdropFilter: "blur(10px)",
-    borderBottom: "1px solid rgba(255,255,255,0.1)",
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    color: "white",
-    zIndex: 1000,
-  }}
+      initial={{ y: -80 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.5 }}
+      style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        width: "100%",
+        padding: "15px 40px",
+        background: "rgba(0,0,0,0.8)",
+        backdropFilter: "blur(10px)",
+        borderBottom: "1px solid rgba(255,255,255,0.1)",
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        color: "white",
+        zIndex: 1000,
+      }}
     >
-      {/* LOGO */}
       <h2 style={{ fontWeight: "bold" }}>
         Chauhan Construction
       </h2>
 
-      {/* LINKS */}
       <div style={{ display: "flex", gap: "30px" }}>
         {links.map((link) => (
           <a
@@ -72,20 +70,9 @@ function Navbar() {
               color: active === link.id ? "#facc15" : "white",
               transition: "0.3s",
             }}
-            onMouseEnter={(e) => {
-              e.target.style.color = "#facc15";
-              e.target.style.textShadow = "0px 0px 8px #facc15";
-            }}
-            onMouseLeave={(e) => {
-              if (active !== link.id) {
-                e.target.style.color = "white";
-                e.target.style.textShadow = "none";
-              }
-            }}
           >
             {link.name}
 
-            {/* 🔥 BACKGROUND HIGHLIGHT */}
             {active === link.id && (
               <span
                 style={{
@@ -98,7 +85,6 @@ function Navbar() {
               />
             )}
 
-            {/* 🔥 UNDERLINE */}
             <span
               style={{
                 position: "absolute",
