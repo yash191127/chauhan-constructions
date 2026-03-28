@@ -55,7 +55,7 @@ function Navbar() {
         Chauhan Construction
       </h2>
 
-      <div style={{ display: "flex", gap: "30px" }}>
+      <div style={{ display: "flex", gap: "15px" }}>
         {links.map((link) => (
           <a
             key={link.id}
