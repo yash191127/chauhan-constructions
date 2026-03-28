@@ -1,0 +1,65 @@
+.stack-container {
+  position: relative;
+  width: 300px;
+  height: 380px;
+  margin: auto;
+}
+
+.stack-container {
+  position: relative;
+  width: 320px;
+  height: 420px;
+  margin: auto;
+  perspective: 1200px;
+}
+
+/* 🔥 Card Design */
+.card {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 30px;
+
+  background: linear-gradient(
+    145deg,
+    rgba(255,255,255,0.15),
+    rgba(255,255,255,0.03)
+  );
+
+  backdrop-filter: blur(25px);
+  border: 1px solid rgba(255,255,255,0.2);
+
+  box-shadow:
+    0 20px 60px rgba(0,0,0,0.7),
+    inset 0 0 30px rgba(255,255,255,0.05);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+
+  transition: all 0.4s ease;
+}
+
+/* 🔥 Hover Glow */
+.card:hover {
+  transform: scale(1.05);
+  box-shadow:
+    0 0 40px rgba(250,204,21,0.5),
+    0 0 80px rgba(250,204,21,0.3);
+}
+
+/* 🔥 Floating animation */
+.card-rotate {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  animation: float 6s ease-in-out infinite;
+}
+
+/* 🔥 Floating keyframe */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+  100% { transform: translateY(0px); }
+}
