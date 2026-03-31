@@ -8,6 +8,7 @@ import Projects from "../components/Projects";
 import CTA from "../components/CTA";
 import About from "../components/About";
 import Footer from "../components/Footer";
+import MobileNav from "../components/MobileNav";
 
 function Home() {
   return (
@@ -25,6 +26,7 @@ function Home() {
         <CTA />
         <About />
         <Footer />
+        <MobileNav />
       </div>
     </>
   );
