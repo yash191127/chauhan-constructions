@@ -2,9 +2,10 @@ import { motion, useMotionValue, useTransform } from "framer-motion";
 import { useState, useEffect } from "react";
 import "./Stack.css";
 
-function CardRotate({ children, onSendToBack, sensitivity, disableDrag = false }) {
+function CardRotate({ children, onSendToBack, sensitivity }) {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
+
   const rotateX = useTransform(y, [-100, 100], [60, -60]);
   const rotateY = useTransform(x, [-100, 100], [-60, 60]);
 
@@ -21,10 +22,9 @@ function CardRotate({ children, onSendToBack, sensitivity, disableDrag = false }
     <motion.div
       className="card-rotate"
       style={{ x, y, rotateX, rotateY }}
-      drag={!disableDrag}
+      drag
       dragConstraints={{ top: 0, right: 0, bottom: 0, left: 0 }}
       dragElastic={0.6}
-      whileTap={{ cursor: "grabbing" }}
       onDragEnd={handleDragEnd}
     >
       {children}
@@ -32,12 +32,7 @@ function CardRotate({ children, onSendToBack, sensitivity, disableDrag = false }
   );
 }
 
-export default function Stack({
-  cards = [],
-  sensitivity = 200,
-  autoplay = true,
-  autoplayDelay = 3000,
-}) {
+export default function Stack({ cards = [], sensitivity = 200 }) {
   const [stack, setStack] = useState(cards);
 
   useEffect(() => {
@@ -52,16 +47,6 @@ export default function Stack({
       return newStack;
     });
   };
-
-  useEffect(() => {
-    if (!autoplay || stack.length <= 1) return;
-
-    const interval = setInterval(() => {
-      sendToBack(stack.length - 1);
-    }, autoplayDelay);
-
-    return () => clearInterval(interval);
-  }, [stack, autoplay, autoplayDelay]);
 
   return (
     <div className="stack-container">

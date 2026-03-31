@@ -1,105 +1,79 @@
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { useState, useEffect, useMemo } from "react";
+
+const navLinks = [
+  { name: "Home", href: "#" }, // Goes to top
+  { name: "Services", href: "#services" },
+  { name: "Process", href: "#process" },
+  { name: "Projects", href: "#projects" },
+  { name: "Contact", href: "#contact" },
+  { name: "About", href: "#about" },
+   // Goes to the CTA section
+];
 
 function Navbar() {
-  const [active, setActive] = useState("hero");
-
-  // ✅ FIX: useMemo use kiya
-  const links = useMemo(() => [
-    { name: "Home", id: "hero" },
-    { name: "Services", id: "services" },
-    { name: "Projects", id: "projects" },
-    { name: "Contact", id: "contact" },
-  ], []);
+  const [activeTab, setActiveTab] = useState("Home");
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      links.forEach((link) => {
-        const section = document.getElementById(link.id);
-        if (section) {
-          const rect = section.getBoundingClientRect();
-
-          if (rect.top <= 150 && rect.bottom >= 150) {
-            setActive(link.id);
-          }
-        }
-      });
+      setIsScrolled(window.scrollY > 50);
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [links]); // ✅ now stable
+  }, []);
 
   return (
-    <motion.nav
-      initial={{ y: -80 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.5 }}
-      style={{
-        position: "fixed",
-        top: 0,
-        left: 0,
-        width: "100%",
-        padding: "15px 40px",
-        background: "rgba(0,0,0,0.8)",
-        backdropFilter: "blur(10px)",
-        borderBottom: "1px solid rgba(255,255,255,0.1)",
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-        color: "white",
-        zIndex: 1000,
-      }}
+    <nav
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
+        isScrolled
+          ? "py-4 bg-black/80 backdrop-blur-lg border-b border-white/10 shadow-2xl"
+          : "py-6 bg-transparent border-b border-transparent"
+      }`}
     >
-      <h2 style={{ fontWeight: "bold" }}>
-        Chauhan Construction
-      </h2>
+      <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
+        
+        {/* LOGO */}
+        <div className="flex-shrink-0 cursor-pointer" onClick={() => window.scrollTo(0, 0)}>
+          <h1 className="text-xl md:text-2xl font-black tracking-wider text-white">
+            CHAUHAN <span className="text-yellow-500">CONSTRUCTION</span>
+          </h1>
+        </div>
 
-      <div style={{ display: "flex", gap: "15px" }}>
-        {links.map((link) => (
-          <a
-            key={link.id}
-            href={`#${link.id}`}
-            onClick={() => setActive(link.id)}
-            style={{
-              position: "relative",
-              padding: "5px 10px",
-              borderRadius: "8px",
-              cursor: "pointer",
-              fontWeight: active === link.id ? "bold" : "normal",
-              color: active === link.id ? "#facc15" : "white",
-              transition: "0.3s",
-            }}
+        {/* NAVIGATION LINKS */}
+        <div className="hidden md:flex items-center space-x-2">
+          {navLinks.map((link) => (
+            <a
+              key={link.name}
+              href={link.href}
+              onClick={() => setActiveTab(link.name)}
+              className={`${
+                activeTab === link.name ? "text-black" : "text-zinc-300 hover:text-white"
+              } relative px-5 py-2 text-xs font-bold uppercase tracking-widest transition-colors duration-300`}
+            >
+              {activeTab === link.name && (
+                <motion.div
+                  layoutId="active-pill"
+                  className="absolute inset-0 bg-yellow-500 rounded-full"
+                  transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                />
+              )}
+              <span className="relative z-10">{link.name}</span>
+            </a>
+          ))}
+        </div>
+
+        {/* GET A QUOTE BUTTON */}
+        <div className="hidden md:block">
+          <a 
+            href="#contact" 
+            className="px-6 py-2.5 rounded-full bg-white/5 border border-white/20 text-white text-xs font-black tracking-widest hover:bg-yellow-500 hover:text-black hover:border-yellow-500 transition-all duration-500"
           >
-            {link.name}
-
-            {active === link.id && (
-              <span
-                style={{
-                  position: "absolute",
-                  inset: 0,
-                  background: "rgba(255,255,255,0.1)",
-                  borderRadius: "8px",
-                  zIndex: -1,
-                }}
-              />
-            )}
-
-            <span
-              style={{
-                position: "absolute",
-                left: 0,
-                bottom: -5,
-                width: active === link.id ? "100%" : "0%",
-                height: "2px",
-                background: "#facc15",
-                transition: "0.3s",
-              }}
-            />
+            GET A QUOTE
           </a>
-        ))}
+        </div>
       </div>
-    </motion.nav>
+    </nav>
   );
 }
 
