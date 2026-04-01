@@ -25,12 +25,13 @@ function Hero() {
       <div className="relative z-20 max-w-7xl mx-auto px-8 md:px-16 w-full">
         
         {/* 3. THE "GLASS CANARY" CONTENT BOX */}
-        <motion.div 
-          initial={{ opacity: 0, x: -100 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1, ease: "easeOut" }}
-          className="max-w-2xl"
-        >
+        <motion.div
+  initial={{ opacity: 0, y: 20 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true, margin: "-50px" }} // 🔥 Add a margin so it starts earlier
+  transition={{ duration: 0.6, ease: "easeOut" }}
+  style={{ willChange: "transform" }} // 🔥 This tells the browser to use the GPU
+>
           {/* Quality Badge */}
           <div className="flex items-center gap-3 mb-8">
             <span className="px-4 py-1 rounded-full bg-yellow-500 text-black text-[10px] font-black tracking-[0.2em] uppercase shadow-[0_0_20px_rgba(234,179,8,0.5)]">

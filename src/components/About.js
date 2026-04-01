@@ -46,11 +46,12 @@ export default function About() {
 
         {/* Content Section */}
         <motion.div
-          initial={{ opacity: 0, x: 60 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-        >
+  initial={{ opacity: 0, y: 20 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true, margin: "-50px" }} // 🔥 Add a margin so it starts earlier
+  transition={{ duration: 0.6, ease: "easeOut" }}
+  style={{ willChange: "transform" }} // 🔥 This tells the browser to use the GPU
+>
           <div className="flex items-center gap-3 mb-6">
             <div className="w-10 h-px bg-yellow-500" />
             <span className="text-yellow-500 font-bold tracking-[0.3em] uppercase text-[10px]">The Founder</span>
