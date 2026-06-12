@@ -1,151 +1,107 @@
-import React from "react";
-import { motion } from "framer-motion";
-import { FaMapMarkerAlt, FaRulerCombined, FaRupeeSign, FaArrowRight } from "react-icons/fa";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import saharaHouseImg from "../assets/saharanpur-geometric-house.jpg";
 
-// Premium Demo Data with Realistic Indian Formatting
-const projectsData = [
+const projects = [
   {
     id: 1,
-    title: "Modern Minimalist Villa",
-    location: "Saharanpur, UP",
-    category: "Residential Construction",
-    area: "3,200 sq.ft",
-    value: "1.2 Cr",
-    image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1000&q=80",
+    title: "Geometric Multi-Story House",
+    location: "Saharanpur",
+    category: "Residential",
+    image: saharaHouseImg, // Using the imported variable
+    description: "Modern, complex facade architecture featuring geometric stone and wood panels."
   },
   {
     id: 2,
-    title: "Hillview Premium Duplex",
-    location: "Dehradun, UK",
-    category: "Turnkey Project",
-    area: "2,800 sq.ft",
-    value: "95 Lakhs",
-    image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1000&q=80",
+    title: "Modern Skyline Hub",
+    location: "Dehradun",
+    category: "Commercial",
+    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=60",
   },
   {
     id: 3,
-    title: "Corporate Glass Complex",
-    location: "Roorkee, UK",
-    category: "Commercial Build",
-    area: "8,500 sq.ft",
-    value: "3.5 Cr",
-    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1000&q=80",
+    title: "Elegance Heights",
+    location: "Roorkee",
+    category: "Residential",
+    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=60",
   },
   {
     id: 4,
-    title: "Luxury Interior Restyling",
-    location: "Haridwar, UK",
-    category: "Interior & Renovation",
-    area: "1,500 sq.ft",
-    value: "25 Lakhs",
-    image: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1000&q=80",
+    title: "Chauhan Corporate Plaza",
+    location: "Haridwar",
+    category: "Commercial",
+    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=60",
   },
 ];
 
-function Projects() {
+const categories = ["All", "Residential", "Commercial"];
+
+export default function Projects() {
+  const [filter, setFilter] = useState("All");
+
+  const filteredProjects = filter === "All" 
+    ? projects 
+    : projects.filter((p) => p.category === filter);
+
   return (
-    <div id="projects" className="relative py-32 bg-zinc-950 w-full flex flex-col items-center justify-center overflow-hidden">
-      
-      {/* Background Ambience */}
-      <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_top_right,_rgba(234,179,8,0.05),_transparent_50%)] pointer-events-none" />
-
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6">
+    <section id="projects" className="py-24 bg-zinc-950 px-6 md:px-20">
+      <div className="max-w-7xl mx-auto">
         
-        {/* Section Header */}
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6"
-        >
+        {/* Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
           <div>
-            <h2 className="text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-4">
-              Featured <span className="text-yellow-500">Projects</span>
-            </h2>
-            <p className="text-zinc-400 text-lg max-w-xl">
-              Explore our portfolio of high-end residential and commercial builds. Quality craftsmanship delivered on time.
-            </p>
+            <span className="text-yellow-500 font-bold tracking-[0.3em] uppercase text-[10px]">Portfolio</span>
+            <h2 className="text-5xl font-black text-white mt-4">Featured <span className="text-zinc-600 font-light italic text-4xl">Works</span></h2>
           </div>
-          
-          <button className="flex items-center gap-2 text-yellow-500 font-semibold hover:text-yellow-400 transition-colors group">
-            View All Projects 
-            <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
-          </button>
-        </motion.div>
 
-        {/* Massive 2x2 Grid Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
-          {projectsData.map((project, index) => (
-            <motion.div
-              key={project.id}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="group relative h-[450px] lg:h-[550px] w-full rounded-3xl overflow-hidden cursor-pointer"
-            >
-              {/* High-Res Image with smooth zoom on hover */}
-              <img 
-                src={project.image} 
-                alt={project.title} 
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-110"
-              />
-
-              {/* Default Dark Gradient (Always visible at bottom for readability) */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
-
-              {/* Hover Overlay Gradient (Darkens the whole image slightly on hover) */}
-              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-              {/* Floating Category Pill */}
-              <div className="absolute top-6 left-6 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-xs font-bold uppercase tracking-wider">
-                {project.category}
-              </div>
-
-              {/* Content Block at the bottom */}
-              <div className="absolute bottom-0 left-0 w-full p-8 translate-y-8 group-hover:translate-y-0 transition-transform duration-500 ease-out">
-                
-                <h3 className="text-3xl font-bold text-white mb-2">{project.title}</h3>
-                
-                <div className="flex items-center gap-2 text-yellow-500 font-medium mb-6">
-                  <FaMapMarkerAlt />
-                  <span>{project.location}</span>
-                </div>
-
-                {/* Hidden Stats that fade in and slide up on hover */}
-                <div className="flex flex-wrap items-center gap-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 border-t border-white/20 pt-6">
-                  
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-zinc-300">
-                      <FaRulerCombined />
-                    </div>
-                    <div>
-                      <p className="text-xs text-zinc-400 uppercase tracking-wider">Area</p>
-                      <p className="text-white font-semibold">{project.area}</p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-yellow-500/20 flex items-center justify-center text-yellow-500">
-                      <FaRupeeSign />
-                    </div>
-                    <div>
-                      <p className="text-xs text-yellow-500/80 uppercase tracking-wider">Project Value</p>
-                      <p className="text-white font-bold text-lg">₹ {project.value}</p>
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-
-            </motion.div>
-          ))}
+          {/* Category Filter */}
+          <div className="flex gap-4 border-b border-white/5 pb-2">
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setFilter(cat)}
+                className={`text-[10px] font-black uppercase tracking-widest px-4 py-2 transition-all duration-300 ${
+                  filter === cat ? "text-yellow-500 border-b-2 border-yellow-500" : "text-zinc-500 hover:text-white"
+                }`}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
         </div>
 
+        {/* Project Grid */}
+        <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+          <AnimatePresence mode="popLayout">
+            {filteredProjects.map((project) => (
+              <motion.div
+                layout
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.4 }}
+                key={project.id}
+                className="group relative overflow-hidden rounded-[2rem] aspect-[16/10] bg-zinc-900 border border-white/5"
+              >
+                {/* Image */}
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-70 group-hover:opacity-100"
+                />
+
+                {/* Overlay Content */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent flex flex-col justify-end p-10 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                  <span className="text-yellow-500 text-[10px] font-black tracking-widest uppercase mb-2">{project.category} — {project.location}</span>
+                  <h3 className="text-3xl font-black text-white mb-4 leading-tight">{project.title}</h3>
+                  
+                  <div className="w-12 h-1 bg-yellow-500 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500" />
+                </div>
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </motion.div>
       </div>
-    </div>
+    </section>
   );
 }
-
-export default Projects;

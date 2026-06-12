@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { FaCalculator, FaHammer, FaDraftingCompass, FaCheckCircle } from "react-icons/fa";
+import { FaCalculator, FaHammer, FaDraftingCompass, FaCheckCircle, FaInstagram } from "react-icons/fa"; 
 // Your Firebase Imports
 import { db } from "../firebase";
 import { collection, addDoc } from "firebase/firestore";
@@ -14,32 +14,25 @@ function CTA() {
 
   const [loading, setLoading] = useState(false);
 
-  // Handle input
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  // 🔥 Integrated Submit Function (Firestore + WhatsApp)
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
 
     try {
-      // 1. Save to Firebase
       await addDoc(collection(db, "leads"), {
         ...form,
         createdAt: new Date(),
       });
 
-      // 2. Format WhatsApp Message
       const message = `Hello Chauhan Construction 👷‍♂️\n\nI want a construction estimate.\n\nName: ${form.name}\nPhone: ${form.phone}\nCity: ${form.city}`;
       const whatsappURL = `https://wa.me/918006651693?text=${encodeURIComponent(message)}`;
 
-      // 3. Open WhatsApp and Alert
       window.open(whatsappURL, "_blank");
       alert("✅ Request Submitted Successfully!");
-
-      // 4. Reset Form
       setForm({ name: "", phone: "", city: "" });
 
     } catch (error) {
@@ -47,6 +40,11 @@ function CTA() {
       alert("❌ Error submitting form. Please check your connection.");
     }
     setLoading(false);
+  };
+
+  // 🔥 Your Instagram Link Integrated
+  const handleInstagramClick = () => {
+    window.open("https://www.instagram.com/chauhan_costructions_/", "_blank");
   };
 
   return (
@@ -59,7 +57,6 @@ function CTA() {
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="flex flex-col lg:flex-row gap-16 items-center">
           
-          {/* LEFT SIDE: Brand Authority */}
           <motion.div 
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -93,7 +90,6 @@ function CTA() {
             </div>
           </motion.div>
 
-          {/* RIGHT SIDE: The High-End Form */}
           <motion.div 
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -150,8 +146,26 @@ function CTA() {
                 {!loading && <FaCheckCircle />}
               </motion.button>
               
-              <p className="text-center text-zinc-500 text-xs">
-                Data secured by Firebase. WhatsApp redirect will follow submission.
+              {/* SOCIAL DIVIDER */}
+              <div className="relative flex items-center justify-center my-4">
+                <div className="w-full h-px bg-white/5"></div>
+                <span className="absolute bg-zinc-900 px-4 text-zinc-600 text-[9px] uppercase tracking-[0.3em] font-black">Live on Social</span>
+              </div>
+
+              {/* INSTAGRAM LINK BUTTON */}
+              <motion.button
+                type="button"
+                onClick={handleInstagramClick}
+                whileHover={{ y: -2, backgroundColor: "rgba(255,255,255,0.08)" }}
+                whileTap={{ scale: 0.98 }}
+                className="w-full bg-white/5 border border-white/10 text-white font-bold py-4 rounded-2xl flex items-center justify-center gap-3 transition-all"
+              >
+                <FaInstagram className="text-pink-500 text-xl" />
+                <span className="text-xs tracking-widest uppercase">Follow @chauhan_costructions_</span>
+              </motion.button>
+
+              <p className="text-center text-zinc-500 text-[10px] uppercase tracking-widest">
+                Data secured by Firebase • WhatsApp Redirect Enabled
               </p>
             </form>
           </motion.div>
