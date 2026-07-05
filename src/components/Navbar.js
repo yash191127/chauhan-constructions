@@ -35,7 +35,7 @@ function Navbar() {
         {/* LOGO - Responsive text size */}
         <div className="flex-shrink-0 cursor-pointer" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>
           <h1 className="text-lg md:text-2xl font-black tracking-tighter text-white uppercase">
-            CHAUHAN <span className="text-yellow-500 font-black">CONSTRUCTION</span>
+            CHAUHAN <span className="text-yellow-500 font-black">CONSTRUCTIONS</span>
           </h1>
         </div>
 

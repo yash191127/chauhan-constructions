@@ -17,7 +17,7 @@ function Footer() {
           {/* 1. BRAND IDENTITY */}
           <div className="space-y-6">
             <h2 className="text-2xl font-black tracking-tighter text-white uppercase">
-              CHAUHAN <span className="text-yellow-500">CONSTRUCTION</span>
+              CHAUHAN <span className="text-yellow-500">CONSTRUCTIONS</span>
             </h2>
             <p className="text-zinc-500 text-sm leading-relaxed max-w-xs">
               Engineering legacies across Saharanpur and Dehradun. From architectural planning to turnkey luxury interiors, we build the future.
@@ -95,7 +95,7 @@ function Footer() {
         {/* BOTTOM COPYRIGHT BAR - CLEANED VERSION */}
         <div className="pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
           <p className="text-zinc-600 text-xs tracking-widest uppercase">
-            © {currentYear} Chauhan Construction. All Rights Reserved.
+            © {currentYear} Chauhan Constructions. All Rights Reserved.
           </p>
           <div className="flex gap-8 text-[10px] font-bold text-zinc-600 tracking-widest uppercase">
             {/* Added ! to # to satisfy ESLint warnings */}
