@@ -6,17 +6,17 @@ function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative bg-zinc-950 pt-20 pb-10 overflow-hidden border-t border-white/5">
+    <footer className="relative bg-zinc-950 pt-16 md:pt-20 pb-32 md:pb-10 overflow-hidden border-t border-white/5">
       
       {/* Background Decorative Glow */}
       <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-yellow-500/5 rounded-full blur-[120px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-12 mb-12 md:mb-16">
           
           {/* 1. BRAND IDENTITY */}
           <div className="space-y-6">
-            <h2 className="text-2xl font-black tracking-tighter text-white uppercase">
+            <h2 className="text-xl sm:text-2xl font-black tracking-tight md:tracking-tighter text-white uppercase leading-tight">
               CHAUHAN <span className="text-yellow-500">CONSTRUCTIONS</span>
             </h2>
             <p className="text-zinc-500 text-sm leading-relaxed max-w-xs">
@@ -93,11 +93,11 @@ function Footer() {
         </div>
 
         {/* BOTTOM COPYRIGHT BAR - CLEANED VERSION */}
-        <div className="pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
-          <p className="text-zinc-600 text-xs tracking-widest uppercase">
+        <div className="pt-8 md:pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
+          <p className="text-zinc-600 text-[10px] sm:text-xs tracking-widest uppercase leading-relaxed">
             © {currentYear} Chauhan Constructions. All Rights Reserved.
           </p>
-          <div className="flex gap-8 text-[10px] font-bold text-zinc-600 tracking-widest uppercase">
+          <div className="flex flex-wrap justify-center gap-4 sm:gap-8 text-[10px] font-bold text-zinc-600 tracking-widest uppercase">
             {/* Added ! to # to satisfy ESLint warnings */}
             <a href="#!" className="hover:text-white transition-colors cursor-default">Privacy Policy</a>
             <a href="#!" className="hover:text-white transition-colors cursor-default">Terms of Service</a>

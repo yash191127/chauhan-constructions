@@ -13,6 +13,9 @@
 html, body, #root {
   height: 100%;
   background: transparent !important;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 /* Smooth scrolling */
@@ -21,6 +24,7 @@ html {
 }
 body {
   color: white !important;
+  min-width: 320px;
 }
 html {
   scroll-behavior: smooth;
@@ -32,4 +36,11 @@ html {
 img {
   content-visibility: auto;
   image-rendering: -webkit-optimize-contrast;
+  max-width: 100%;
+}
+
+@media (max-width: 767px) {
+  .mobile-floating-button {
+    display: none !important;
+  }
 }

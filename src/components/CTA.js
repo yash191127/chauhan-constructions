@@ -48,14 +48,14 @@ function CTA() {
   };
 
   return (
-    <div id="contact" className="relative py-32 bg-zinc-950 overflow-hidden">
+    <div id="contact" className="relative py-20 md:py-32 bg-zinc-950 overflow-hidden">
       
       {/* Premium Background Glows */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-yellow-500/10 rounded-full blur-[100px] -mr-48 -mt-48" />
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-yellow-500/5 rounded-full blur-[100px] -ml-48 -mb-48" />
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="flex flex-col lg:flex-row gap-16 items-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+        <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 items-center">
           
           <motion.div 
             initial={{ opacity: 0, x: -50 }}
@@ -63,26 +63,26 @@ function CTA() {
             viewport={{ once: true }}
             className="w-full lg:w-1/2 text-left"
           >
-            <h2 className="text-4xl md:text-6xl font-extrabold text-white mb-8 tracking-tight leading-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-6xl font-extrabold text-white mb-5 md:mb-8 tracking-tight leading-tight">
               Let's Calculate Your <span className="text-yellow-500">Vision.</span>
             </h2>
             
-            <p className="text-zinc-400 text-lg mb-12 max-w-lg leading-relaxed">
+            <p className="text-zinc-400 text-base md:text-lg mb-8 md:mb-12 max-w-lg leading-relaxed">
               Our engineers will provide a detailed structural and financial breakdown for your project within 24 hours.
             </p>
 
-            <div className="space-y-8">
+            <div className="space-y-6 md:space-y-8">
               {[
                 { icon: <FaCalculator />, title: "Precision Costing", desc: "No hidden charges, just honest engineering math." },
                 { icon: <FaDraftingCompass />, title: "Structural Planning", desc: "Initial layout concepts included in the quote." },
                 { icon: <FaHammer />, title: "Material Selection", desc: "Choose from Premium to Ultra-Luxury grades." }
               ].map((item, i) => (
-                <div key={i} className="flex gap-5 items-start">
-                  <div className="w-12 h-12 flex-shrink-0 rounded-2xl bg-zinc-900 border border-white/10 flex items-center justify-center text-yellow-500 text-xl shadow-xl">
+                <div key={i} className="flex gap-4 md:gap-5 items-start">
+                  <div className="w-11 h-11 md:w-12 md:h-12 flex-shrink-0 rounded-2xl bg-zinc-900 border border-white/10 flex items-center justify-center text-yellow-500 text-lg md:text-xl shadow-xl">
                     {item.icon}
                   </div>
                   <div>
-                    <h4 className="text-white font-bold text-lg">{item.title}</h4>
+                    <h4 className="text-white font-bold text-base md:text-lg">{item.title}</h4>
                     <p className="text-zinc-500 text-sm">{item.desc}</p>
                   </div>
                 </div>
@@ -94,7 +94,7 @@ function CTA() {
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="w-full lg:w-1/2 bg-zinc-900/50 backdrop-blur-xl p-8 md:p-12 rounded-[40px] border border-white/10 shadow-2xl"
+            className="w-full lg:w-1/2 bg-zinc-900/50 backdrop-blur-xl p-5 sm:p-8 md:p-12 rounded-3xl md:rounded-[40px] border border-white/10 shadow-2xl"
           >
             <form onSubmit={handleSubmit} className="space-y-6 text-left">
               <div className="space-y-2">
@@ -106,7 +106,7 @@ function CTA() {
                   value={form.name}
                   onChange={handleChange}
                   placeholder="e.g. Yash Rana"
-                  className="w-full bg-black/40 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-yellow-500 transition-all placeholder:text-zinc-700"
+                  className="w-full bg-black/40 border border-white/10 rounded-2xl px-4 md:px-6 py-4 text-white focus:outline-none focus:border-yellow-500 transition-all placeholder:text-zinc-700"
                 />
               </div>
 
@@ -119,7 +119,7 @@ function CTA() {
                   value={form.phone}
                   onChange={handleChange}
                   placeholder="+91 80066 51693"
-                  className="w-full bg-black/40 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-yellow-500 transition-all placeholder:text-zinc-700"
+                  className="w-full bg-black/40 border border-white/10 rounded-2xl px-4 md:px-6 py-4 text-white focus:outline-none focus:border-yellow-500 transition-all placeholder:text-zinc-700"
                 />
               </div>
 
@@ -132,7 +132,7 @@ function CTA() {
                   value={form.city}
                   onChange={handleChange}
                   placeholder="e.g. Saharanpur"
-                  className="w-full bg-black/40 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-yellow-500 transition-all placeholder:text-zinc-700"
+                  className="w-full bg-black/40 border border-white/10 rounded-2xl px-4 md:px-6 py-4 text-white focus:outline-none focus:border-yellow-500 transition-all placeholder:text-zinc-700"
                 />
               </div>
 
@@ -158,13 +158,13 @@ function CTA() {
                 onClick={handleInstagramClick}
                 whileHover={{ y: -2, backgroundColor: "rgba(255,255,255,0.08)" }}
                 whileTap={{ scale: 0.98 }}
-                className="w-full bg-white/5 border border-white/10 text-white font-bold py-4 rounded-2xl flex items-center justify-center gap-3 transition-all"
+                className="w-full bg-white/5 border border-white/10 text-white font-bold py-4 px-3 rounded-2xl flex items-center justify-center gap-3 transition-all"
               >
                 <FaInstagram className="text-pink-500 text-xl" />
-                <span className="text-xs tracking-widest uppercase">Follow @chauhan_costructions_</span>
+                <span className="text-[10px] sm:text-xs tracking-widest uppercase break-all">Follow @chauhan_costructions_</span>
               </motion.button>
 
-              <p className="text-center text-zinc-500 text-[10px] uppercase tracking-widest">
+              <p className="text-center text-zinc-500 text-[10px] uppercase tracking-[0.16em] sm:tracking-widest leading-relaxed">
                 Data secured by Firebase • WhatsApp Redirect Enabled
               </p>
             </form>

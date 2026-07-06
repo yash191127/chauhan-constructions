@@ -27,30 +27,30 @@ const chooseData = [
 
 function WhyChoose() {
   return (
-    <div className="relative py-28 bg-zinc-950 overflow-hidden">
+    <div className="relative py-20 md:py-28 bg-zinc-950 overflow-hidden">
       
       {/* Blueprint Grid Background */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:35px_35px]" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-yellow-500/5 rounded-full blur-[100px]" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 md:w-[600px] md:h-[600px] bg-yellow-500/5 rounded-full blur-[100px]" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10 text-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10 text-center">
         
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-20"
+          className="mb-12 md:mb-20"
         >
-          <h2 className="text-4xl md:text-5xl font-extrabold text-white">
+          <h2 className="text-3xl md:text-5xl font-extrabold text-white">
             Why Partner with <span className="text-yellow-500">Us?</span>
           </h2>
           <div className="w-24 h-1 bg-yellow-500 mx-auto mt-4 rounded-full" />
         </motion.div>
 
         {/* Updated Grid: Removed Hexagon to prevent text cut-off, used Premium Rounded Cards instead */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-8">
           {chooseData.map((item, index) => (
             <motion.div
               key={index}
@@ -59,15 +59,15 @@ function WhyChoose() {
               whileHover={{ y: -10 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group relative bg-zinc-900/40 backdrop-blur-xl border border-white/10 rounded-[40px] p-10 flex flex-col items-center justify-center min-h-[350px] shadow-2xl hover:border-yellow-500/40 transition-all duration-300"
+              className="group relative bg-zinc-900/40 backdrop-blur-xl border border-white/10 rounded-3xl md:rounded-[40px] p-6 md:p-10 flex flex-col items-center justify-center min-h-[260px] md:min-h-[350px] shadow-2xl hover:border-yellow-500/40 transition-all duration-300"
             >
               {/* Icon Container */}
-              <div className="w-20 h-20 rounded-3xl bg-yellow-500/10 border border-yellow-500/20 flex items-center justify-center text-4xl text-yellow-500 mb-8 group-hover:bg-yellow-500 group-hover:text-black transition-all duration-500 shadow-lg">
+              <div className="w-16 h-16 md:w-20 md:h-20 rounded-2xl md:rounded-3xl bg-yellow-500/10 border border-yellow-500/20 flex items-center justify-center text-3xl md:text-4xl text-yellow-500 mb-6 md:mb-8 group-hover:bg-yellow-500 group-hover:text-black transition-all duration-500 shadow-lg">
                 {item.icon}
               </div>
 
               {/* Title - Static (No more overlap) */}
-              <h3 className="text-2xl font-bold text-white mb-4 leading-tight">
+              <h3 className="text-xl md:text-2xl font-bold text-white mb-4 leading-tight">
                 {item.title}
               </h3>
 

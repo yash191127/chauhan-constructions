@@ -26,15 +26,15 @@ function Navbar() {
     <nav
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
         isScrolled
-          ? "py-4 bg-black/90 backdrop-blur-xl border-b border-white/10 shadow-2xl"
-          : "py-6 bg-transparent border-b border-transparent"
+          ? "py-3 md:py-4 bg-black/90 backdrop-blur-xl border-b border-white/10 shadow-2xl"
+          : "py-4 md:py-6 bg-transparent border-b border-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 flex items-center justify-between gap-3">
         
         {/* LOGO - Responsive text size */}
-        <div className="flex-shrink-0 cursor-pointer" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>
-          <h1 className="text-lg md:text-2xl font-black tracking-tighter text-white uppercase">
+        <div className="min-w-0 flex-1 md:flex-none cursor-pointer" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>
+          <h1 className="text-[15px] xs:text-base sm:text-lg md:text-2xl font-black tracking-tight md:tracking-tighter text-white uppercase leading-tight">
             CHAUHAN <span className="text-yellow-500 font-black">CONSTRUCTIONS</span>
           </h1>
         </div>
@@ -63,7 +63,7 @@ function Navbar() {
         </div>
 
         {/* RIGHT SIDE BUTTONS */}
-        <div className="flex items-center gap-4">
+        <div className="flex flex-shrink-0 items-center gap-3 md:gap-4">
           {/* DESKTOP QUOTE BUTTON (Hidden on Phone) */}
           <a 
             href="#contact" 
@@ -76,7 +76,7 @@ function Navbar() {
           <motion.a 
             whileTap={{ scale: 0.9 }}
             href="tel:+919719478845"
-            className="md:hidden w-10 h-10 rounded-full bg-yellow-500 flex items-center justify-center text-black shadow-[0_0_20px_rgba(234,179,8,0.3)]"
+            className="md:hidden w-10 h-10 flex-shrink-0 rounded-full bg-yellow-500 flex items-center justify-center text-black shadow-[0_0_20px_rgba(234,179,8,0.3)]"
           >
             <FaPhoneAlt size={14} />
           </motion.a>

@@ -36,7 +36,7 @@ const locations = [
 
 function Cities() {
   return (
-    <div className="relative py-32 bg-zinc-950 flex flex-col items-center justify-center overflow-hidden">
+    <div className="relative py-20 md:py-32 bg-zinc-950 flex flex-col items-center justify-center overflow-hidden">
       
       {/* 1. THE PREMIUM BACKGROUND: Blueprint Grid & Radar Glow */}
       <div className="absolute inset-0 z-0">
@@ -44,10 +44,10 @@ function Cities() {
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,#000_70%,transparent_100%)]" />
         
         {/* Giant Centered Ambient Glow */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-yellow-500/5 rounded-full blur-[100px]" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 md:w-[600px] md:h-[600px] bg-yellow-500/5 rounded-full blur-[100px]" />
       </div>
 
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6">
         
         {/* 2. THE HEADER */}
         <motion.div 
@@ -55,18 +55,18 @@ function Cities() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-20"
+          className="text-center mb-12 md:mb-20"
         >
-          <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-4 tracking-tight">
+          <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-4 tracking-tight">
             Our Service <span className="text-yellow-500">Footprint</span>
           </h2>
-          <p className="text-zinc-400 max-w-2xl mx-auto text-lg">
+          <p className="text-zinc-400 max-w-2xl mx-auto text-base md:text-lg leading-relaxed">
             Delivering premium construction and renovation services across key cities in Uttar Pradesh and Uttarakhand.
           </p>
         </motion.div>
 
         {/* 3. THE INTERACTIVE CITY GRID */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6">
           {locations.map((loc, index) => (
             <motion.div
               key={loc.id}
@@ -74,7 +74,7 @@ function Cities() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.15 }} // Staggered fade in
-              className="group relative bg-zinc-900/40 backdrop-blur-sm border border-white/10 rounded-3xl p-8 hover:bg-zinc-800/60 hover:border-yellow-500/50 transition-all duration-500 overflow-hidden"
+              className="group relative bg-zinc-900/40 backdrop-blur-sm border border-white/10 rounded-3xl p-6 md:p-8 hover:bg-zinc-800/60 hover:border-yellow-500/50 transition-all duration-500 overflow-hidden"
             >
               
               {/* Hover Glow Effect inside the card */}

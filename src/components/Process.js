@@ -29,15 +29,15 @@ const processSteps = [
 
 function Process() {
   return (
-    <div id="process" className="relative py-32 bg-zinc-950 overflow-hidden">
+    <div id="process" className="relative py-20 md:py-32 bg-zinc-950 overflow-hidden">
       
       {/* Background Decorative Element */}
       <div className="absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent z-0 hidden lg:block" />
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center mb-24">
+        <div className="text-center mb-14 md:mb-24">
           <motion.span 
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -48,14 +48,14 @@ function Process() {
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            className="text-4xl md:text-6xl font-black text-white uppercase tracking-tighter"
+            className="text-3xl sm:text-4xl md:text-6xl font-black text-white uppercase tracking-tight md:tracking-tighter leading-tight"
           >
             The Journey to Your <span className="text-yellow-500">Dream Home</span>
           </motion.h2>
         </div>
 
         {/* Timeline Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-6">
           {processSteps.map((step, index) => (
             <motion.div
               key={index}
@@ -67,7 +67,7 @@ function Process() {
             >
               
               {/* STEP NUMBER CIRCLE */}
-              <div className="relative z-10 w-24 h-24 mb-8">
+              <div className="relative z-10 w-20 h-20 md:w-24 md:h-24 mb-6 md:mb-8">
                 {/* Outer Rotating Border */}
                 <motion.div 
                   animate={{ rotate: 360 }}
@@ -76,7 +76,7 @@ function Process() {
                 />
                 
                 {/* Main Icon Hub */}
-                <div className="absolute inset-2 rounded-full bg-zinc-900 border border-white/10 flex items-center justify-center text-3xl text-yellow-500 shadow-2xl group-hover:bg-yellow-500 group-hover:text-black transition-all duration-500">
+                <div className="absolute inset-2 rounded-full bg-zinc-900 border border-white/10 flex items-center justify-center text-2xl md:text-3xl text-yellow-500 shadow-2xl group-hover:bg-yellow-500 group-hover:text-black transition-all duration-500">
                   {step.icon}
                   
                   {/* Small Step Counter Label */}

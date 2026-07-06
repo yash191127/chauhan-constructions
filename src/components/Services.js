@@ -38,7 +38,7 @@ function Services() {
   };
 
   return (
-    <div id="services" className="relative py-32 bg-zinc-950 w-full flex flex-col items-center justify-center overflow-hidden">
+    <div id="services" className="relative py-20 md:py-32 bg-zinc-950 w-full flex flex-col items-center justify-center overflow-hidden">
       
       {/* 1. ARCHITECTURAL BACKGROUND */}
       <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
@@ -48,36 +48,36 @@ function Services() {
           </pattern>
           <rect width="100%" height="100%" fill="url(#grid-services)" />
         </svg>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 select-none">
+        <div className="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 select-none">
           <span className="text-[250px] font-black text-white/[0.02] whitespace-nowrap uppercase">
             Excellence
           </span>
         </div>
       </div>
 
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-yellow-500/10 rounded-full blur-[120px] -mr-64 -mt-64 z-0" />
-      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-yellow-500/5 rounded-full blur-[120px] -ml-64 -mb-64 z-0" />
+      <div className="absolute top-0 right-0 w-72 h-72 md:w-[500px] md:h-[500px] bg-yellow-500/10 rounded-full blur-[100px] md:blur-[120px] -mr-40 md:-mr-64 -mt-40 md:-mt-64 z-0" />
+      <div className="absolute bottom-0 left-0 w-72 h-72 md:w-[500px] md:h-[500px] bg-yellow-500/5 rounded-full blur-[100px] md:blur-[120px] -ml-40 md:-ml-64 -mb-40 md:-mb-64 z-0" />
 
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 flex flex-col items-center">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 flex flex-col items-center">
         
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="w-full text-center mb-24 flex flex-col items-center"
+          className="w-full text-center mb-12 md:mb-24 flex flex-col items-center"
         >
-          <div className="flex items-center gap-4 mb-4">
+          <div className="flex items-center justify-center gap-3 md:gap-4 mb-4">
             <div className="h-px w-8 bg-yellow-500" />
-            <span className="text-yellow-500 text-xs font-black tracking-[0.3em] uppercase">Premium Solutions</span>
+            <span className="text-yellow-500 text-[10px] md:text-xs font-black tracking-[0.22em] md:tracking-[0.3em] uppercase">Premium Solutions</span>
             <div className="h-px w-8 bg-yellow-500" />
           </div>
-          <h2 className="text-5xl md:text-7xl font-black tracking-tight text-white uppercase italic">
+          <h2 className="text-4xl md:text-7xl font-black tracking-tight text-white uppercase italic">
             Expert <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-yellow-200">Craft</span>
           </h2>
         </motion.div>
 
-        <div className="w-full flex justify-center items-center gap-10 flex-wrap">
+        <div className="w-full flex justify-center items-center gap-6 md:gap-10 flex-wrap">
           {servicesData.map((service) => {
             const Icon = service.icon;
             const isExpanded = expandedId === service.id;
@@ -90,7 +90,7 @@ function Services() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
-                className="group relative flex min-h-[550px] w-[350px] rounded-[45px] overflow-hidden cursor-pointer bg-zinc-900 shadow-2xl border border-white/5 hover:border-yellow-500/30 transition-all duration-500"
+                className="group relative flex min-h-[430px] md:min-h-[550px] w-full max-w-[350px] rounded-3xl md:rounded-[45px] overflow-hidden cursor-pointer bg-zinc-900 shadow-2xl border border-white/5 hover:border-yellow-500/30 transition-all duration-500"
               >
                 <img 
                   src={service.image} 
@@ -100,13 +100,13 @@ function Services() {
 
                 <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/60 to-transparent z-10" />
 
-                <div className="relative bottom-0 left-0 w-full p-10 z-20 flex flex-col items-center text-center mt-auto">
+                <div className="relative bottom-0 left-0 w-full p-6 md:p-10 z-20 flex flex-col items-center text-center mt-auto">
                   
-                  <div className="mb-8 p-5 rounded-[25px] bg-zinc-900/90 border border-white/10 backdrop-blur-md group-hover:bg-yellow-500 transition-all duration-500 group-hover:shadow-[0_0_30px_#facc15]">
-                    <Icon className="text-3xl text-yellow-500 group-hover:text-black transition-colors" />
+                  <div className="mb-6 md:mb-8 p-4 md:p-5 rounded-2xl md:rounded-[25px] bg-zinc-900/90 border border-white/10 backdrop-blur-md group-hover:bg-yellow-500 transition-all duration-500 group-hover:shadow-[0_0_30px_#facc15]">
+                    <Icon className="text-2xl md:text-3xl text-yellow-500 group-hover:text-black transition-colors" />
                   </div>
                   
-                  <h3 className="text-3xl font-black mb-4 text-white uppercase tracking-tight">
+                  <h3 className="text-2xl md:text-3xl font-black mb-4 text-white uppercase tracking-tight">
                     {service.title}
                   </h3>
                   
@@ -130,7 +130,7 @@ function Services() {
 
                   <button 
                     onClick={() => handleToggle(service.id)}
-                    className={`flex items-center gap-3 px-8 py-3 rounded-full transition-all duration-500 text-[10px] font-black tracking-widest ${
+                    className={`flex items-center gap-3 px-6 md:px-8 py-3 rounded-full transition-all duration-500 text-[10px] font-black tracking-widest ${
                       isExpanded 
                       ? 'bg-yellow-500 text-black border-yellow-500' 
                       : 'bg-white/5 border border-white/10 text-white hover:bg-yellow-500 hover:text-black hover:border-yellow-500'

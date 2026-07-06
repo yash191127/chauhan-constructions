@@ -44,23 +44,23 @@ export default function Projects() {
     : projects.filter((p) => p.category === filter);
 
   return (
-    <section id="projects" className="py-24 bg-zinc-950 px-6 md:px-20">
+    <section id="projects" className="py-20 md:py-24 bg-zinc-950 px-4 sm:px-6 md:px-20 overflow-hidden">
       <div className="max-w-7xl mx-auto">
         
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 md:mb-16 gap-6 md:gap-8">
           <div>
             <span className="text-yellow-500 font-bold tracking-[0.3em] uppercase text-[10px]">Portfolio</span>
-            <h2 className="text-5xl font-black text-white mt-4">Featured <span className="text-zinc-600 font-light italic text-4xl">Works</span></h2>
+            <h2 className="text-4xl md:text-5xl font-black text-white mt-4 leading-tight">Featured <span className="text-zinc-600 font-light italic text-3xl md:text-4xl">Works</span></h2>
           </div>
 
           {/* Category Filter */}
-          <div className="flex gap-4 border-b border-white/5 pb-2">
+          <div className="flex gap-2 sm:gap-4 border-b border-white/5 pb-2 overflow-x-auto">
             {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setFilter(cat)}
-                className={`text-[10px] font-black uppercase tracking-widest px-4 py-2 transition-all duration-300 ${
+                className={`flex-shrink-0 text-[10px] font-black uppercase tracking-widest px-3 sm:px-4 py-2 transition-all duration-300 ${
                   filter === cat ? "text-yellow-500 border-b-2 border-yellow-500" : "text-zinc-500 hover:text-white"
                 }`}
               >
@@ -71,7 +71,7 @@ export default function Projects() {
         </div>
 
         {/* Project Grid */}
-        <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+        <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-5 md:gap-8">
           <AnimatePresence mode="popLayout">
             {filteredProjects.map((project) => (
               <motion.div
@@ -81,7 +81,7 @@ export default function Projects() {
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.4 }}
                 key={project.id}
-                className="group relative overflow-hidden rounded-[2rem] aspect-[16/10] bg-zinc-900 border border-white/5"
+                className="group relative overflow-hidden rounded-2xl md:rounded-[2rem] aspect-[4/3] sm:aspect-[16/10] bg-zinc-900 border border-white/5"
               >
                 {/* Image */}
                 <img
@@ -91,9 +91,9 @@ export default function Projects() {
                 />
 
                 {/* Overlay Content */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent flex flex-col justify-end p-10 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent flex flex-col justify-end p-5 md:p-10 translate-y-0 md:translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
                   <span className="text-yellow-500 text-[10px] font-black tracking-widest uppercase mb-2">{project.category} — {project.location}</span>
-                  <h3 className="text-3xl font-black text-white mb-4 leading-tight">{project.title}</h3>
+                  <h3 className="text-xl md:text-3xl font-black text-white mb-3 md:mb-4 leading-tight">{project.title}</h3>
                   
                   <div className="w-12 h-1 bg-yellow-500 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500" />
                 </div>

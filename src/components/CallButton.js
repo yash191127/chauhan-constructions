@@ -3,6 +3,7 @@ import { FaPhone } from "react-icons/fa";
 function CallButton() {
   return (
     <a
+      className="mobile-floating-button"
       href="tel:+918006651693" // 🔴 replace your number
       style={{
         position: "fixed",
