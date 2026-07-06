@@ -16,8 +16,7 @@ function Home() {
     <>
       <Navbar />
 
-      {/* Fix navbar overlap */}
-      <div className="pt-[72px] md:pt-[90px] pb-24 md:pb-0 overflow-x-hidden">
+      <div className="pb-24 md:pb-0 overflow-x-hidden">
         <Hero />
         <Services />
         <Process />
