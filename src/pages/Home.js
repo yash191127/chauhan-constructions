@@ -10,6 +10,7 @@ import About from "../components/About";
 import Footer from "../components/Footer";
 import MobileNav from "../components/MobileNav";
 
+
 function Home() {
   return (
     <>

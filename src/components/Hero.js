@@ -35,7 +35,7 @@ function Hero() {
           {/* Quality Badge */}
           <div className="flex items-center gap-3 mb-8">
             <span className="px-4 py-1 rounded-full bg-yellow-500 text-black text-[10px] font-black tracking-[0.2em] uppercase shadow-[0_0_20px_rgba(234,179,8,0.5)]">
-              ESTD 2011
+              ESTD 2013
             </span>
             <div className="h-px w-12 bg-white/30" />
             <span className="text-white/60 text-[10px] font-bold tracking-[0.2em] uppercase flex items-center gap-2">
